@@ -9,7 +9,7 @@ const CreatePost = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
-    axios.post("https://postify-backend-1-okmc.onrender.com/create-post", formData)
+    axios.post("https://postify-mvdl.onrender.com/create-post", formData)
       .then((res) => {
         console.log(res);
         navigate("/feed");

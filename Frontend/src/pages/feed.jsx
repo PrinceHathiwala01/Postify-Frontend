@@ -10,7 +10,7 @@ const Feed = () => {
     ]);
   
   useEffect(() => {
-    axios.get("https://postify-backend-1-okmc.onrender.com/posts")
+    axios.get("https://postify-mvdl.onrender.com/posts")
       .then((res) => {
         setPosts(res.data.post);
     })
