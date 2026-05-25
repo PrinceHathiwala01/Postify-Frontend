@@ -33,6 +33,10 @@ app.get("/posts", async (req, res) => {
     })
 })
 
+app.get("/ping", (req, res) => {
+    res.status(200).send("Server is awake");
+});
+
 /*//Simple way to send data to the server by using postman and REST Api
 app.post("/post", async (req, res) => {
     const data = req.body;
