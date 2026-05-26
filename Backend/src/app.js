@@ -33,12 +33,6 @@ app.get("/posts", async (req, res) => {
     })
 })
 
-app.get("/health", (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "Server is awake"
-    });
-});
 
 /*//Simple way to send data to the server by using postman and REST Api
 app.post("/post", async (req, res) => {
