@@ -7,7 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL || "https://postifycloud.onrender.c
 const CreatePost = () => {
   const navigate = useNavigate();
 
-  const handelSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
@@ -29,7 +29,7 @@ const CreatePost = () => {
   return (
     <section className="create-post-section">
       <h1>Create Post</h1>
-      <form onSubmit={handelSubmit}>
+      <form onSubmit={handleSubmit}>
         <input type="file" name="image" accept="image/*" required />
         <input type="text" name="caption" placeholder="Enter caption" required />
         <div>
