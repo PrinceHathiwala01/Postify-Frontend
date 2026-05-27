@@ -48,6 +48,10 @@ app.get("/posts", async (req, res) => {
     }
 })
 
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 
 /*//Simple way to send data to the server by using postman and REST Api
 app.post("/post", async (req, res) => {
