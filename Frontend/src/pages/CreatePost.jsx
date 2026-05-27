@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 const CreatePost = () => {
   const navigate = useNavigate();
 
@@ -9,7 +11,7 @@ const CreatePost = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
-    axios.post("https://postify-mvdl.onrender.com/create-post", formData)
+    axios.post(`${API_URL}/create-post`, formData)
       .then((res) => {
         console.log(res);
         navigate("/feed");

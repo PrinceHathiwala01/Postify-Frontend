@@ -1,5 +1,8 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL || "https://postifycloud.onrender.com";
+
 const Feed = () => {
     const [posts, setPosts] = useState([
         {
@@ -8,20 +11,28 @@ const Feed = () => {
             caption: "This is a sample post",
         }
     ]);
+    const [error, setError] = useState("");
   
   useEffect(() => {
-    axios.get("https://postify-mvdl.onrender.com/posts")
+    axios.get(`${API_URL}/posts`)
       .then((res) => {
-        setPosts(res.data.post);
+        const fetchedPosts = res.data.posts || res.data.post || [];
+        setPosts(Array.isArray(fetchedPosts) ? fetchedPosts : []);
+        setError("");
     })
+      .catch((err) => {
+        console.log(err);
+        setError(err.response?.data?.message || "Posts could not be loaded");
+      });
    },[])
   
     return (
       <section className="feed-section">
+        {error && <p className="post-caption">{error}</p>}
         {
           posts.map((post) => (
-            <div key={post.id} className="post">
-              <img src={post.image} alt={`Post ${post.id}`} className="post-card" />
+            <div key={post._id || post.id || post.image} className="post">
+              <img src={post.image} alt={post.caption || "Post"} className="post-card" />
               <p className="post-caption">{post.caption}</p>
             </div>
           ))
