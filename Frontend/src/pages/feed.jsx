@@ -35,3 +35,6 @@ const Feed = () => {
 };
 
 export default Feed;
+
+
+//* This component fetches posts from the backend API and displays them in a feed format. It handles errors gracefully by showing an error message if the posts cannot be loaded. Each post is displayed with its image and caption. The component uses React's useState and useEffect hooks to manage state and side effects.
